@@ -17,12 +17,12 @@ const person = ( props ) => {
         
     }
     return (
-        // <div className="Person" style={style} onClick={props.click}>
+        <div className="Person" style={style} onClick={props.click}>
         <StyleDiv>
             <p>I'm {props.name}. I am {props.age} years old.</p>
             <p>{ props.children }</p>
         </StyleDiv>
-        // </div>
+        </div>
     )
 }
 
