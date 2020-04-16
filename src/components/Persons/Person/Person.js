@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+
 import classes from './Person.css';
+import Aux from '../../../hoc/Auxiliary';
 
 class Person extends Component {
     render(){
         console.log('[Person.js] renderng...');
     
         return (
-            <div className={classes.Person} onClick={this.props.click}>
+            <Aux>
                 <p>I'm {this.props.name}. I am {this.props.age} years old.</p>
                 <p>{ this.props.children }</p>
-            </div>
+                <input type="text" onChange={this.props.changed} value={this.props.name} />
+            </Aux>
         )
     }
 }
