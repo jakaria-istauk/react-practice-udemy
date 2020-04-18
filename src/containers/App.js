@@ -43,28 +43,31 @@ class App extends Component {
     console.log('[App.js] componentDidUpdate'); 
   }
 
-  switchName = () => {
-    // console.log('clicked!!!!');
-    this.setState( { persons:[
-      { name: 'Jakaria Istauk', age: 24 },
-      { name: 'Golam Rabbi', age: 26 },
-      { name: 'Parvez', age: 22 },
-    ] })
-  }
+  nameChange = (event) => (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
 
-  nameChange = (event) => {
-    this.setState( { persons:[
-      { name: 'Jakaria Istauk', age: 24 },
-      { name: event.target.value, age: 26 },
-      { name: 'Parvez', age: 22 },
-    ] })
-  }
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    // const person = Object.assign({}, this.state.persons[personIndex]);
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons });
+  };
 
   deletePerson = (index) => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons.slice();
+    const persons = [...this.state.persons];
     persons.splice(index, 1);
-    this.setState( {persons: persons} )
-  }
+    this.setState({ persons: persons });
+  };
 
   togglePersons = () => {
     const doesShow = this.state.showPersons;
@@ -80,6 +83,7 @@ class App extends Component {
      persons = <Persons
             persons = {this.state.persons}
             clicked = {this.deletePerson}
+            changed={this.nameChange}
           />;
     }    
 
@@ -92,6 +96,7 @@ class App extends Component {
           title = {this.props.appTitle}
           persons={this.state.persons} 
           showPersons={this.state.showPersons} 
+          personsLength={this.state.persons.length}
           clicked={this.togglePersons}/> ) : null }
          {persons}
         </Aux>

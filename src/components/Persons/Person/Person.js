@@ -13,10 +13,11 @@ class Person extends Component {
             <Aux>
                 <p>I'm {this.props.name}. I am {this.props.age} years old.</p>
                 <p>{ this.props.children }</p>
-                {/* <input type="text" onChange={this.props.changed} value={this.props.name} /> */}
+                <input type="text" onChange={this.props.changed} value={this.props.name} />
             </Aux>
         )
     }
 }
 
-export default withClass(Person, classes.Person);
+export default Person;
+// export default withClass(Person, classes.Person);
