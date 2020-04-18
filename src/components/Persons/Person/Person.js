@@ -19,5 +19,4 @@ class Person extends Component {
     }
 }
 
-export default Person;
-// export default withClass(Person, classes.Person);
+export default withClass(Person, classes.Person);
