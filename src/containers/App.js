@@ -43,7 +43,7 @@ class App extends Component {
     console.log('[App.js] componentDidUpdate'); 
   }
 
-  nameChange = (event) => (event, id) => {
+  nameChange = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
@@ -83,7 +83,7 @@ class App extends Component {
      persons = <Persons
             persons = {this.state.persons}
             clicked = {this.deletePerson}
-            changed={this.nameChange}
+            changed = {this.nameChange}
           />;
     }    
 
